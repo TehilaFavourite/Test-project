@@ -18,13 +18,13 @@ function App() {
 
   const contractAddress = "0xf1E113663725939195f4c6C8684F6e822bE6ae3d";
   
-  // profile form data state
+  // data state profile
   const [newProfileData, setNewProfileData] = useState({
     firstName: "",
     lastName: ""
   })
 
-  //  currently conected user
+  //  user connected currently
   const [userAccount, setUserAccount] = useState({
     address: null,
     balance: null
@@ -373,7 +373,7 @@ function App() {
         })
   
         contract.on('NewProfile', (lastName, firstName, from, userId, event) => {
-          event.removeListener(); // for some reasons, this event is getting fired twice at every point a profile is created. removeListener prevents that
+          event.removeListener(); //this event is getting fired twice at every point a profile is created for some reasons. removeListener prevents that
           const newProfile = {
             profileAddress: from,
             firstName,
